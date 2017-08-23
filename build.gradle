@@ -1,0 +1,16 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.seleniumhq.selenium:selenium-java:3.5.1'
+    compile 'com.codeborne:selenide:4.5.1'
+}
+
+run {
+    mainClassName = 'Core'
+
+}
