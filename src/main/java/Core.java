@@ -54,11 +54,9 @@ public class Core {
         ElementsCollection liElems = $$("li");
 
         SelenideElement desiredLi = null;
-        for (int i = 0; i < liElems.size(); ++i) {
-            SelenideElement currLi = liElems.get(i);
+        for (SelenideElement currLi: liElems)
             if(currLi.getAttribute("data-department").equals(where))
                 desiredLi = currLi;
-        }
 
         //чек сабменюшек на visible/hidden
         SelenideElement tmSubwrap = desiredLi.$(By.className("topmenu__subwrap")).shouldBe(hidden);
@@ -70,10 +68,8 @@ public class Core {
         ElementsCollection smLinks = tmSubwrap.$$("a");
         LinkedHashMap <String, String> smLinksLHM = new LinkedHashMap();
 
-        for (int i = 0; i < smLinks.size(); ++i) {
-            SelenideElement currLink = smLinks.get(i);
+        for (SelenideElement currLink: smLinks)
             smLinksLHM.put(currLink.getText(), currLink.getAttribute("style"));
-        }
 
         //hidden элементы в мапу не попадают, жмакаем стрелку
         //можешь ширину окна сменить на 1600 и перезапустить, посмотреть как работает
