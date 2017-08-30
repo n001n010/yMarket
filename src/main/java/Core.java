@@ -2,7 +2,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.LinkedHashMap;
 
@@ -11,17 +10,20 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-/**
- * Created by User on 20.08.2017.
- */
 public class Core {
     public static void main(String[] args) throws Exception {
-        System.setProperty("webdriver.chrome.driver", "D:/code/Chromedriver/chromedriver.exe");
-        System.setProperty("selenide.browser", "Chrome");
+        //System.setProperty("webdriver.chrome.driver", "D:/code/Chromedriver/chromedriver.exe");
+        //System.setProperty("selenide.browser", "Chrome");
+
+       /* DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setBrowserName("chrome");
+        capabilities.setPlatform(org.openqa.selenium.Platform.WINDOWS);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("chrome.switches", "--disable-vaapi-accelerated-video-encode");
-        Configuration.browserSize = "1200x900"; //ширина 1200, чтобы до искомой сабменюшки пришлось скроллить
+        Configuration.browserSize = "1200x900"; //ширина 1200, чтобы до искомой сабменюшки пришлось скроллить*/
 
+        Configuration.browser = MyGridProvider.class.getName();
+        System.setProperty("selenide.browser", "webdrivers.MyGridProvider");
         open("https://market.yandex.ru/");
 
         locateSubMenuLink("Игрушки", "Детские товары");
